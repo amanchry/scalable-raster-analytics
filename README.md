@@ -1,7 +1,7 @@
 # Scalable Raster Analytics with STAC, xarray & Dask
 
-A **course** on cloud-native raster workflows: **STAC** (discovery), **Cloud-Optimized GeoTIFF** (streaming), **xarray** (data cube), **rioxarray** (geospatial I/O), and **Dask** (scalable compute). 
-
+A **technical guide** to cloud-native raster workflows using open standards and scalable Python tools:  
+**STAC** (discovery), **Cloud-Optimized GeoTIFF** (streaming), **xarray** (data cube modeling), **rioxarray** (geospatial integration), and **Dask** (parallel computation).
 
 
 ## Quick start

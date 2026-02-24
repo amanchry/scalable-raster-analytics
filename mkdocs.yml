@@ -1,11 +1,8 @@
-# Scalable Raster Analytics with STAC, xarray & Dask
-# MkDocs configuration
-
 site_name: Scalable Raster Analytics with STAC, xarray & Dask
-site_description: A course on cloud-native raster workflows with STAC, COG, xarray, rioxarray, and Dask
-site_author: Workshop Authors
-repo_url: null
-edit_uri: null
+site_description: A technical guide to designing scalable, cloud-native raster analytics pipelines using STAC, xarray, and Dask.
+site_author: Aman Chaudhary
+# repo_url: https://github.com/amanchry/scalable-raster-analytics
+site_url: https://amanchry.github.io/scalable-raster-analytics/
 
 theme:
   name: material
@@ -71,7 +68,9 @@ nav:
 
 extra:
   social:
-    - icon: fontawesome/brands/python
-      link: https://www.python.org/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/amanchry/
+    - icon: fontawesome/brands/github
+      link: https://github.com/amanchry
   version:
     provider: mike
