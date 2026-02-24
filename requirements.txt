@@ -1,0 +1,28 @@
+# Core geospatial & data cube
+xarray
+rioxarray
+rasterio
+pyproj
+geopandas
+
+# STAC
+pystac-client
+pystac
+planetary-computer
+
+# Dask & parallel
+dask[distributed]
+dask-geopandas
+
+# Visualization & notebooks
+matplotlib
+jupyter
+jupyterlab
+ipywidgets
+nbformat
+
+
+# Docs build (optional)
+mkdocs
+mkdocs-material
+mkdocs-jupyter

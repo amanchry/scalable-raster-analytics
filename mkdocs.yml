@@ -1,0 +1,77 @@
+# Scalable Raster Analytics with STAC, xarray & Dask
+# MkDocs configuration
+
+site_name: Scalable Raster Analytics with STAC, xarray & Dask
+site_description: A course on cloud-native raster workflows with STAC, COG, xarray, rioxarray, and Dask
+site_author: Workshop Authors
+repo_url: null
+edit_uri: null
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: en
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - attr_list
+  - md_in_html
+  - tables
+
+nav:
+  - Home: index.md
+  - Introduction: intro.md
+  - Environment Setup: setup.md
+  - Lessons:
+    - "1. STAC — Discovery": lessons/01-stac-discovery.md
+    - "2. Cloud-Optimized GeoTIFF": lessons/02-cog-streaming.md
+    - "3. xarray & the Data Cube": lessons/03-xarray-datacube.md
+    - "4. rioxarray — Geospatial xarray": lessons/04-rioxarray.md
+    - "5. Dask — Scalable Analytics": lessons/05-dask-analytics.md
+    - "6. End-to-End Workflow": lessons/06-end-to-end.md
+  - Notebooks: notebooks.md
+  - References: references.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/python
+      link: https://www.python.org/
+  version:
+    provider: mike

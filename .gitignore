@@ -1,0 +1,8 @@
+# Workshop
+.venv/
+venv/
+site/
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
