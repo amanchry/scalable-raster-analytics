@@ -12,7 +12,7 @@
 
 ---
 
-## Dask in one paragraph
+## Dask 
 
 **Dask** provides array-like types (`dask.array`) that look like NumPy but:
 
