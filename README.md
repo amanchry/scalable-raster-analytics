@@ -1,11 +1,14 @@
 # Scalable Raster Analytics with STAC, xarray & Dask
 
-A **technical guide** to cloud-native raster workflows using open standards and scalable Python tools:  
-**STAC** (discovery), **Cloud-Optimized GeoTIFF** (streaming), **xarray** (data cube modeling), **rioxarray** (geospatial integration), and **Dask** (parallel computation).
+This README is for **documentation developers** (building, previewing, and deploying the MkDocs site).
 
+Course pages: [amanchry.github.io/scalable-raster-analytics](https://amanchry.github.io/scalable-raster-analytics/).
 
-## Quick start
-### Install Dependencies
+---
+
+## Quick start (docs site)
+
+### Install documentation dependencies
 ```bash
 python3 -m venv .venv
 
@@ -44,7 +47,6 @@ This deploys to GitHub Pages
 ```bash
 mkdocs gh-deploy
 ```
-
 
 
 

@@ -13,7 +13,7 @@ STAC API (search)  →  Items + asset URLs  →  Sign (if needed)
        →  .compute() / .to_raster()
 ```
 
-All steps stay in Python; data stays in the cloud until you explicitly read or write.
+All steps stay in Python; data stays in the cloud until a read or write is triggered.
 
 ---
 
@@ -26,9 +26,11 @@ import planetary_computer
 catalog = pystac_client.Client.open(
     "https://planetarycomputer.microsoft.com/api/stac/v1"
 )
+BBOX = [75.62, 16.20, 77.29, 17.47]  # northern Karnataka, India
+
 search = catalog.search(
     collections=["sentinel-2-l2a"],
-    bbox=[-122.4, 37.6, -122.2, 37.8],
+    bbox=BBOX,
     datetime="2023-06-01/2023-06-30",
     max_items=5,
 )
@@ -127,4 +129,4 @@ This is the **scalable raster analytics** workflow: discovery (STAC), streaming 
 
 ---
 
-Download the notebook for this lesson: `notebooks/06-end-to-end.ipynb`.
+Download the notebook for this lesson: `notebooks/05-end-to-end.ipynb`.

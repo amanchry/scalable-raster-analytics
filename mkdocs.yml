@@ -57,12 +57,11 @@ nav:
   - Introduction: intro.md
   - Environment Setup: setup.md
   - Lessons:
-    - "1. STAC — Discovery": lessons/01-stac-discovery.md
-    - "2. Cloud-Optimized GeoTIFF": lessons/02-cog-streaming.md
-    - "3. xarray & the Data Cube": lessons/03-xarray-datacube.md
-    - "4. rioxarray — Geospatial xarray": lessons/04-rioxarray.md
-    - "5. Dask — Scalable Analytics": lessons/05-dask-analytics.md
-    - "6. End-to-End Workflow": lessons/06-end-to-end.md
+    - "1. STAC & Cloud-Optimized GeoTIFF": lessons/01-stac-cog.md
+    - "2. xarray & the Data Cube": lessons/02-xarray-datacube.md
+    - "3. rioxarray — Geospatial xarray": lessons/03-rioxarray.md
+    - "4. Dask — Scalable Analytics": lessons/04-dask-analytics.md
+    - "5. End-to-End Workflow": lessons/05-end-to-end.md
   - Notebooks: notebooks.md
   - References: references.md
 

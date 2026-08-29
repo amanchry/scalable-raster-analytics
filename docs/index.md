@@ -14,7 +14,7 @@ This guide addresses that shift. Instead of file-based raster processing, we ado
 | Concept | Technology | Role in the workflow |
 |--------|------------|----------------------|
 | **Discovery** | STAC | Find and filter spatiotemporal raster assets across catalogs |
-| **Streaming** | Cloud-Optimized GeoTIFF (COG) | Read only the bytes you need over HTTP |
+| **Streaming** | Cloud-Optimized GeoTIFF (COG) | Read only the required bytes over HTTP |
 | **Data cube** | xarray | Multi-dimensional raster model (time, band, y, x) |
 | **Geospatial** | rioxarray | CRS, bounds, and raster I/O in xarray |
 | **Scalability** | Dask | Parallel, chunked computation that fits memory |
@@ -34,4 +34,4 @@ This guide addresses that shift. Instead of file-based raster processing, we ado
 
 ## License & attribution
 
-This course uses open catalogs (e.g. Microsoft Planetary Computer) and open-source libraries. Please attribute data and software according to their respective licenses.
+This course uses open catalogs (e.g. Microsoft Planetary Computer) and open-source libraries. Data and software should be attributed according to their respective licenses.

@@ -18,9 +18,9 @@
 
 - Are **lazy**: operations build a task graph instead of executing immediately.
 - Are **chunked**: the logical array is split into blocks; each block is a task.
-- Execute in **parallel** when you call `.compute()` (using threads, processes, or a cluster).
+- Execute in **parallel** when `.compute()` is called (using threads, processes, or a cluster).
 
-**xarray** integrates Dask: if a DataArray’s data is a `dask.array`, then xarray operations (slicing, reduction, arithmetic) stay lazy until you call `.compute()` or trigger I/O (e.g. plot, write).
+**xarray** integrates Dask: if a DataArray’s data is a `dask.array`, then xarray operations (slicing, reduction, arithmetic) stay lazy until `.compute()` or I/O (e.g. plot, write).
 
 ---
 
@@ -28,7 +28,7 @@
 
 - **Chunk size**: Small enough to fit in memory (e.g. 512×512 or 1024×1024 pixels per chunk); large enough to amortize overhead.
 - **Alignment**: Chunk boundaries should align with the raster’s internal blocks (e.g. COG tiles) when possible, so one read = one chunk.
-- **Dimensions**: For a `(time, band, y, x)` cube, you might chunk in `y` and `x` and keep `time` and `band` unchunked (or chunk time if you have many dates).
+- **Dimensions**: For a `(time, band, y, x)` cube, chunk `y` and `x` and keep `time` and `band` unchunked (or chunk time if there are many dates).
 
 Typical pattern:
 
@@ -104,4 +104,4 @@ Dask will:
 
 --- 
 
-Download the notebook for this lesson: `notebooks/05-dask-analytics.ipynb`.
+Download the notebook for this lesson: `notebooks/04-dask-analytics.ipynb`.

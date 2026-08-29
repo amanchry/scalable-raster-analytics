@@ -1,19 +1,16 @@
 # Environment Setup
 
-This page configures an environment for the **Scalable Raster Analytics** workshop: STAC discovery, Cloud-Optimized GeoTIFF (COG) streaming, xarray data cubes, rioxarray, and Dask for parallel, chunked processing.
+Create a **conda** environment and install the Python libraries used in this course. The notebooks run in any Jupyter environment; **JupyterLab** is recommended.
 
 ---
 
-### 1. Install Conda (Recommended)
+## 1. Install Conda
 
-Conda is a cross-platform environment manager that makes it easy to install geospatial libraries and keep the workshop stack isolated.
+Follow the step-by-step [Conda Installation Guide (Spatial Thoughts)](https://courses.spatialthoughts.com/install-conda.html) to install **Miniconda** for the host operating system.
 
-#### Windows
+Official installers: [Miniconda](https://docs.conda.io/en/latest/miniconda.html) — pick Windows, macOS (Intel or Apple Silicon), or Linux.
 
-1. Download the **Miniconda installer**:  
-   [Miniconda Windows 64-bit](https://docs.conda.io/en/latest/miniconda.html#windows-installers)
-2. Run the installer and choose “Add Miniconda to PATH” during setup.
-3. Open **Anaconda Prompt** or **Command Prompt** and verify:
+After installing, **restart the terminal** (Windows: open **Anaconda Prompt** or **Anaconda Powershell Prompt**). Verify:
 
 ```bash
 conda --version
@@ -21,77 +18,97 @@ conda --version
 
 ---
 
-#### macOS
+## 2. Create an environment
 
-1. Download the installer for your chip (Intel or Apple Silicon):  
-   [Miniconda macOS](https://docs.conda.io/en/latest/miniconda.html#macos-installers)
-2. Run the installer.
-3. Restart the terminal and verify:
+*(Windows)* Search for **Anaconda Powershell Prompt** and launch it.  
+*(macOS / Linux)* Open a Terminal window.
 
-```bash
-conda --version
-```
-
----
-
-### 2. Create a Conda Environment
-
-Use a dedicated environment so the workshop stack does not conflict with other projects:
+Create a dedicated environment so the workshop stack does not conflict with other projects:
 
 ```bash
-conda create --name geoenv python=3.10
+conda create --name geoenv python=3.10 -y
 conda activate geoenv
 ```
 
----
-
-### 3. Install the Workshop Stack
-
-#### Option A: Conda (recommended)
-
-Install the core geospatial and scientific stack from `conda-forge`:
-
-```bash
-conda install -c conda-forge rasterio xarray rioxarray dask pystac-client \
-  numpy geopandas notebook ipykernel
-```
-
-Optional: for [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/) signed URLs in the lessons:
-
-```bash
-pip install planetary-computer
-```
-
-#### Option B: Pip only
-
-If you prefer not to use Conda for libraries:
-
-```bash
-pip install numpy xarray rioxarray dask pystac-client geopandas
-```
-
-
+The prompt should now start with `(geoenv)`.
 
 ---
 
-### 4. Jupyter Kernel (Optional)
+## 3. Install the workshop packages
 
-To use this environment as a Jupyter kernel:
+Install from `conda-forge`. Copy the block for the host platform.
+
+**Windows** (Anaconda Powershell Prompt)
+
+```powershell
+conda install -c conda-forge -y `
+  numpy rasterio xarray rioxarray dask `
+  pystac-client planetary-computer geopandas pyproj `
+  matplotlib jupyterlab ipykernel
+```
+
+**macOS / Linux**
+
+```bash
+conda install -c conda-forge -y \
+  numpy rasterio xarray rioxarray dask \
+  pystac-client planetary-computer geopandas pyproj \
+  matplotlib jupyterlab ipykernel
+```
+
+The local environment is now ready.
+
+### Option: pip only
+
+Pip-only install (activate `geoenv` first):
+
+```bash
+pip install numpy rasterio xarray rioxarray dask pystac-client \
+  planetary-computer geopandas pyproj matplotlib jupyterlab ipykernel
+```
+
+Geospatial wheels can be fragile on Windows; conda-forge is the more reliable path.
+
+---
+
+## 4. Open the notebooks
+
+From the course repository, with `geoenv` active:
 
 ```bash
 conda activate geoenv
-conda install -c conda-forge notebook ipykernel
+jupyter lab
+```
+
+In the file browser, open the `notebooks/` folder and start with `01-stac-cog.ipynb`.
+
+Classic Jupyter Notebook or VS Code / Cursor: **Kernel → Change Kernel → geoenv** (or the Python interpreter from that environment).
+
+To register the kernel explicitly:
+
+```bash
 python -m ipykernel install --user --name=geoenv --display-name "Python (geoenv)"
 ```
 
-In Jupyter: **Kernel → Change Kernel → Python (geoenv)**.
-
-To remove the kernel later:
-
-```bash
-jupyter kernelspec uninstall geoenv
-```
-
 ---
 
+## 5. Check that it works
+
+In a notebook or `python` prompt:
+
+```python
+import pystac_client
+import planetary_computer
+import rasterio
+import rioxarray
+import xarray
+import dask
+
+print("Ready")
+```
+
+A `Ready` print confirms the stack. Continue with [Lesson 1](lessons/01-stac-cog.md).
+
+
+---
 

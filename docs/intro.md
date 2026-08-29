@@ -4,38 +4,35 @@
 
 Traditional raster workflows often assume:
 
-- Data lives on your machine or a mounted drive.
-- You download full scenes or tiles before analysis.
+- Data lives on a local disk or a mounted drive.
+- Full scenes or tiles are downloaded before analysis.
 - Processing is limited by RAM and single-machine CPU.
 
 **Cloud-native** workflows invert this:
 
 - **Discovery** happens via catalogs (STAC) over the web.
-- **Data stays in the cloud**; you stream only the windows or bands you need (e.g. via COGs).
+- **Data stays in the cloud**; only the required windows or bands are streamed (e.g. via COGs).
 - **Compute** can be chunked and parallelized (Dask) so that large rasters never need to be fully loaded.
 
-The result: you can work with continental or global, multi-temporal rasters from a laptop or a cluster using the same code.
+The same code can then run on a laptop or a cluster, including continental or global multi-temporal rasters.
 
 ---
 
-## The data cube concept
+## Workshop overview
 
-A **data cube** (or *raster data cube*) is a multi-dimensional array where dimensions typically include:
+This workshop covers a cloud-native raster pipeline in Python: **find data, stream it, model it as a cube, and scale the compute**.
 
-- **Spatial**: `y`, `x` (or lat/lon)
-- **Temporal**: `time`
-- **Thematic**: `band`, `variable`, or `layer`
+![Workshop pipeline: STAC → COG → xarray → Dask](assets/images/pipeline-overview.png)
 
-Conceptually:
+| Topic | Tool | Lesson |
+|-------|------|--------|
+| Search satellite rasters by place, time, and metadata (e.g. cloud cover) | **STAC** | [1. STAC & COG](lessons/01-stac-cog.md) |
+| Stream only the required tiles over HTTP — no full-scene download | **COG** | [1. STAC & COG](lessons/01-stac-cog.md) |
+| Model rasters as a labeled cube (`time`, `band`, `y`, `x`) and select by name | **xarray** | [2. Data cube](lessons/02-xarray-datacube.md) |
+| Attach CRS, clip, and reproject inside xarray | **rioxarray** | [3. rioxarray](lessons/03-rioxarray.md) |
+| Run chunked, lazy, parallel analytics that fit in memory | **Dask** | [4. Dask](lessons/04-dask-analytics.md) |
+| Assemble one reproducible NDVI workflow from search to time series | all of the above | [5. End-to-end](lessons/05-end-to-end.md) |
 
-```
-         time →
-band  [  [ 2D raster ]  [ 2D raster ]  ...  ]
-      [  [ 2D raster ]  [ 2D raster ]  ...  ]
-      ...
-```
-
-In this course we use **xarray** to represent this model: dimensions and coordinates are **labeled**, so you select by name (e.g. `time`, `band`) instead of axis index. That makes code readable and less error-prone when combining multiple scenes or variables.
 
 ---
 
@@ -49,6 +46,5 @@ In this course we use **xarray** to represent this model: dimensions and coordin
 | Geospatial | **rioxarray** | CRS, bounds, and GeoTIFF/COG I/O in xarray |
 | Compute | **Dask** | Lazy, chunked, parallel execution |
 
-Together they form a pipeline: **STAC (find) → COG (stream) → xarray (model) → Dask (scale)**.
 
 ---
