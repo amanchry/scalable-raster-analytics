@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://amanchry.github.io/scalable-raster-analytics/notebooks/">
       
       
-        <link rel="prev" href="../lessons/06-end-to-end/">
+        <link rel="prev" href="../lessons/05-end-to-end/">
       
       
         <link rel="next" href="../references/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -372,14 +372,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/01-stac-discovery/" class="md-nav__link">
+      <a href="../lessons/01-stac-cog/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. STAC — Discovery
+    1. STAC & Cloud-Optimized GeoTIFF
   
 
     
@@ -400,14 +400,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/02-cog-streaming/" class="md-nav__link">
+      <a href="../lessons/02-xarray-datacube/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Cloud-Optimized GeoTIFF
+    2. xarray & the Data Cube
   
 
     
@@ -428,14 +428,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/03-xarray-datacube/" class="md-nav__link">
+      <a href="../lessons/03-rioxarray/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. xarray & the Data Cube
+    3. rioxarray — Geospatial xarray
   
 
     
@@ -456,14 +456,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/04-rioxarray/" class="md-nav__link">
+      <a href="../lessons/04-dask-analytics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. rioxarray — Geospatial xarray
+    4. Dask — Scalable Analytics
   
 
     
@@ -484,42 +484,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/05-dask-analytics/" class="md-nav__link">
+      <a href="../lessons/05-end-to-end/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Dask — Scalable Analytics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lessons/06-end-to-end/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6. End-to-End Workflow
+    5. End-to-End Workflow
   
 
     
@@ -640,7 +612,8 @@
 
 
 <h1 id="download-notebooks">Download notebooks</h1>
-<p>All lesson <strong>code is included in the lesson pages</strong> in the docs. These Jupyter notebooks contain the same content so you can <strong>download and run them in your own environment</strong>.</p>
+<p>All lesson <strong>code is included in the lesson pages</strong> in the docs. The Jupyter notebooks contain the same content and can be downloaded and run locally.</p>
+<p>https://github.com/amanchry/scalable-raster-analytics/tree/main/notebooks</p>
 <table>
 <thead>
 <tr>
@@ -651,38 +624,33 @@
 </thead>
 <tbody>
 <tr>
-<td>1. STAC</td>
-<td><code>01-stac-discovery.ipynb</code></td>
-<td>Search a STAC catalog and inspect items/assets</td>
+<td>1. STAC &amp; COG</td>
+<td><code>01-stac-cog.ipynb</code></td>
+<td>Search STAC, sign URLs, stream a COG window</td>
 </tr>
 <tr>
-<td>2. COG</td>
-<td><code>02-cog-streaming.ipynb</code></td>
-<td>Open a COG from URL and read a window</td>
-</tr>
-<tr>
-<td>3. xarray</td>
-<td><code>03-xarray-datacube.ipynb</code></td>
+<td>2. xarray</td>
+<td><code>02-xarray-datacube.ipynb</code></td>
 <td>Build and slice a small data cube</td>
 </tr>
 <tr>
-<td>4. rioxarray</td>
-<td><code>04-rioxarray.ipynb</code></td>
-<td>Open a COG with rioxarray, clip, reproject</td>
+<td>3. rioxarray</td>
+<td><code>03-rioxarray.ipynb</code></td>
+<td>Open DEM and Sentinel-2 COGs, clip, reproject</td>
 </tr>
 <tr>
-<td>5. Dask</td>
-<td><code>05-dask-analytics.ipynb</code></td>
+<td>4. Dask</td>
+<td><code>04-dask-analytics.ipynb</code></td>
 <td>Chunked NDVI and lazy reduction</td>
 </tr>
 <tr>
-<td>6. Workflow</td>
-<td><code>06-end-to-end.ipynb</code></td>
+<td>5. Workflow</td>
+<td><code>05-end-to-end.ipynb</code></td>
 <td>STAC → COG → xarray → Dask pipeline</td>
 </tr>
 </tbody>
 </table>
-<p>Notebooks are in the <code>notebooks/</code> directory. After installing dependencies, open them in your preferred notebook environment.</p>
+<p>Notebooks are in the <code>notebooks/</code> directory. After installing dependencies, open them in a Jupyter environment.</p>
 
 
 
@@ -768,7 +736,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

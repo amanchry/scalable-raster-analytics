@@ -18,14 +18,14 @@
         <link rel="prev" href="../intro/">
       
       
-        <link rel="next" href="../lessons/01-stac-discovery/">
+        <link rel="next" href="../lessons/01-stac-cog/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -358,33 +358,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-conda-recommended" class="md-nav__link">
+  <a href="#1-install-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Install Conda (Recommended)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Install Conda (Recommended)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows
+        1. Install Conda
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#2-create-an-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        macOS
+        2. Create an environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-install-the-workshop-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Install the workshop packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Install the workshop packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-pip-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option: pip only
       
     </span>
   </a>
@@ -397,10 +408,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-conda-environment" class="md-nav__link">
+  <a href="#4-open-the-notebooks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Create a Conda Environment
+        4. Open the notebooks
       
     </span>
   </a>
@@ -408,49 +419,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-install-the-workshop-stack" class="md-nav__link">
+  <a href="#5-check-that-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Install the Workshop Stack
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Install the Workshop Stack">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-conda-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Conda (recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-b-pip-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option B: Pip only
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-jupyter-kernel-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Jupyter Kernel (Optional)
+        5. Check that it works
       
     </span>
   </a>
@@ -519,14 +491,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/01-stac-discovery/" class="md-nav__link">
+      <a href="../lessons/01-stac-cog/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. STAC — Discovery
+    1. STAC & Cloud-Optimized GeoTIFF
   
 
     
@@ -547,14 +519,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/02-cog-streaming/" class="md-nav__link">
+      <a href="../lessons/02-xarray-datacube/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Cloud-Optimized GeoTIFF
+    2. xarray & the Data Cube
   
 
     
@@ -575,14 +547,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/03-xarray-datacube/" class="md-nav__link">
+      <a href="../lessons/03-rioxarray/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. xarray & the Data Cube
+    3. rioxarray — Geospatial xarray
   
 
     
@@ -603,14 +575,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/04-rioxarray/" class="md-nav__link">
+      <a href="../lessons/04-dask-analytics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. rioxarray — Geospatial xarray
+    4. Dask — Scalable Analytics
   
 
     
@@ -631,42 +603,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/05-dask-analytics/" class="md-nav__link">
+      <a href="../lessons/05-end-to-end/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Dask — Scalable Analytics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lessons/06-end-to-end/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6. End-to-End Workflow
+    5. End-to-End Workflow
   
 
     
@@ -768,33 +712,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-conda-recommended" class="md-nav__link">
+  <a href="#1-install-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Install Conda (Recommended)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Install Conda (Recommended)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows
+        1. Install Conda
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#2-create-an-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        macOS
+        2. Create an environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-install-the-workshop-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Install the workshop packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Install the workshop packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-pip-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option: pip only
       
     </span>
   </a>
@@ -807,10 +762,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-conda-environment" class="md-nav__link">
+  <a href="#4-open-the-notebooks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Create a Conda Environment
+        4. Open the notebooks
       
     </span>
   </a>
@@ -818,49 +773,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-install-the-workshop-stack" class="md-nav__link">
+  <a href="#5-check-that-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Install the Workshop Stack
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Install the Workshop Stack">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-conda-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Conda (recommended)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-b-pip-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option B: Pip only
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-jupyter-kernel-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Jupyter Kernel (Optional)
+        5. Check that it works
       
     </span>
   </a>
@@ -885,60 +801,69 @@
 
 
 <h1 id="environment-setup">Environment Setup</h1>
-<p>This page configures an environment for the <strong>Scalable Raster Analytics</strong> workshop: STAC discovery, Cloud-Optimized GeoTIFF (COG) streaming, xarray data cubes, rioxarray, and Dask for parallel, chunked processing.</p>
+<p>Create a <strong>conda</strong> environment and install the Python libraries used in this course. The notebooks run in any Jupyter environment; <strong>JupyterLab</strong> is recommended.</p>
 <hr />
-<h3 id="1-install-conda-recommended">1. Install Conda (Recommended)</h3>
-<p>Conda is a cross-platform environment manager that makes it easy to install geospatial libraries and keep the workshop stack isolated.</p>
-<h4 id="windows">Windows</h4>
-<ol>
-<li>Download the <strong>Miniconda installer</strong>:<br />
-<a href="https://docs.conda.io/en/latest/miniconda.html#windows-installers">Miniconda Windows 64-bit</a></li>
-<li>Run the installer and choose “Add Miniconda to PATH” during setup.</li>
-<li>Open <strong>Anaconda Prompt</strong> or <strong>Command Prompt</strong> and verify:</li>
-</ol>
+<h2 id="1-install-conda">1. Install Conda</h2>
+<p>Follow the step-by-step <a href="https://courses.spatialthoughts.com/install-conda.html">Conda Installation Guide (Spatial Thoughts)</a> to install <strong>Miniconda</strong> for the host operating system.</p>
+<p>Official installers: <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> — pick Windows, macOS (Intel or Apple Silicon), or Linux.</p>
+<p>After installing, <strong>restart the terminal</strong> (Windows: open <strong>Anaconda Prompt</strong> or <strong>Anaconda Powershell Prompt</strong>). Verify:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>--version
 </code></pre></div>
 <hr />
-<h4 id="macos">macOS</h4>
-<ol>
-<li>Download the installer for your chip (Intel or Apple Silicon):<br />
-<a href="https://docs.conda.io/en/latest/miniconda.html#macos-installers">Miniconda macOS</a></li>
-<li>Run the installer.</li>
-<li>Restart the terminal and verify:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>--version
+<h2 id="2-create-an-environment">2. Create an environment</h2>
+<p><em>(Windows)</em> Search for <strong>Anaconda Powershell Prompt</strong> and launch it.<br />
+<em>(macOS / Linux)</em> Open a Terminal window.</p>
+<p>Create a dedicated environment so the workshop stack does not conflict with other projects:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>geoenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10<span class="w"> </span>-y
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>geoenv
+</code></pre></div>
+<p>The prompt should now start with <code>(geoenv)</code>.</p>
+<hr />
+<h2 id="3-install-the-workshop-packages">3. Install the workshop packages</h2>
+<p>Install from <code>conda-forge</code>. Copy the block for the host platform.</p>
+<p><strong>Windows</strong> (Anaconda Powershell Prompt)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">conda</span> <span class="n">install</span> <span class="n">-c</span> <span class="n">conda-forge</span> <span class="n">-y</span> <span class="p">`</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  <span class="n">numpy</span> <span class="n">rasterio</span> <span class="n">xarray</span> <span class="n">rioxarray</span> <span class="n">dask</span> <span class="p">`</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="n">pystac-client</span> <span class="n">planetary-computer</span> <span class="n">geopandas</span> <span class="n">pyproj</span> <span class="p">`</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="n">matplotlib</span> <span class="n">jupyterlab</span> <span class="n">ipykernel</span>
+</code></pre></div>
+<p><strong>macOS / Linux</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>numpy<span class="w"> </span>rasterio<span class="w"> </span>xarray<span class="w"> </span>rioxarray<span class="w"> </span>dask<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>pystac-client<span class="w"> </span>planetary-computer<span class="w"> </span>geopandas<span class="w"> </span>pyproj<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>matplotlib<span class="w"> </span>jupyterlab<span class="w"> </span>ipykernel
+</code></pre></div>
+<p>The local environment is now ready.</p>
+<h3 id="option-pip-only">Option: pip only</h3>
+<p>Pip-only install (activate <code>geoenv</code> first):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>rasterio<span class="w"> </span>xarray<span class="w"> </span>rioxarray<span class="w"> </span>dask<span class="w"> </span>pystac-client<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>planetary-computer<span class="w"> </span>geopandas<span class="w"> </span>pyproj<span class="w"> </span>matplotlib<span class="w"> </span>jupyterlab<span class="w"> </span>ipykernel
+</code></pre></div>
+<p>Geospatial wheels can be fragile on Windows; conda-forge is the more reliable path.</p>
+<hr />
+<h2 id="4-open-the-notebooks">4. Open the notebooks</h2>
+<p>From the course repository, with <code>geoenv</code> active:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>geoenv
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>jupyter<span class="w"> </span>lab
+</code></pre></div>
+<p>In the file browser, open the <code>notebooks/</code> folder and start with <code>01-stac-cog.ipynb</code>.</p>
+<p>Classic Jupyter Notebook or VS Code / Cursor: <strong>Kernel → Change Kernel → geoenv</strong> (or the Python interpreter from that environment).</p>
+<p>To register the kernel explicitly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>geoenv<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">"Python (geoenv)"</span>
 </code></pre></div>
 <hr />
-<h3 id="2-create-a-conda-environment">2. Create a Conda Environment</h3>
-<p>Use a dedicated environment so the workshop stack does not conflict with other projects:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>geoenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>geoenv
+<h2 id="5-check-that-it-works">5. Check that it works</h2>
+<p>In a notebook or <code>python</code> prompt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pystac_client</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">planetary_computer</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">dask</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Ready"</span><span class="p">)</span>
 </code></pre></div>
-<hr />
-<h3 id="3-install-the-workshop-stack">3. Install the Workshop Stack</h3>
-<h4 id="option-a-conda-recommended">Option A: Conda (recommended)</h4>
-<p>Install the core geospatial and scientific stack from <code>conda-forge</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>rasterio<span class="w"> </span>xarray<span class="w"> </span>rioxarray<span class="w"> </span>dask<span class="w"> </span>pystac-client<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>numpy<span class="w"> </span>geopandas<span class="w"> </span>notebook<span class="w"> </span>ipykernel
-</code></pre></div>
-<p>Optional: for <a href="https://planetarycomputer.microsoft.com/">Microsoft Planetary Computer</a> signed URLs in the lessons:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>planetary-computer
-</code></pre></div>
-<h4 id="option-b-pip-only">Option B: Pip only</h4>
-<p>If you prefer not to use Conda for libraries:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>xarray<span class="w"> </span>rioxarray<span class="w"> </span>dask<span class="w"> </span>pystac-client<span class="w"> </span>geopandas
-</code></pre></div>
-<hr />
-<h3 id="4-jupyter-kernel-optional">4. Jupyter Kernel (Optional)</h3>
-<p>To use this environment as a Jupyter kernel:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>geoenv
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>notebook<span class="w"> </span>ipykernel
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>geoenv<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;Python (geoenv)&quot;</span>
-</code></pre></div>
-<p>In Jupyter: <strong>Kernel → Change Kernel → Python (geoenv)</strong>.</p>
-<p>To remove the kernel later:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>geoenv
-</code></pre></div>
+<p>A <code>Ready</code> print confirms the stack. Continue with <a href="../lessons/01-stac-cog/">Lesson 1</a>.</p>
 <hr />
 
 
@@ -1025,7 +950,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

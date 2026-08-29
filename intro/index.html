@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -342,10 +342,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-data-cube-concept" class="md-nav__link">
+  <a href="#workshop-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The data cube concept
+        Workshop overview
       
     </span>
   </a>
@@ -452,14 +452,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/01-stac-discovery/" class="md-nav__link">
+      <a href="../lessons/01-stac-cog/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. STAC — Discovery
+    1. STAC & Cloud-Optimized GeoTIFF
   
 
     
@@ -480,14 +480,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/02-cog-streaming/" class="md-nav__link">
+      <a href="../lessons/02-xarray-datacube/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Cloud-Optimized GeoTIFF
+    2. xarray & the Data Cube
   
 
     
@@ -508,14 +508,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/03-xarray-datacube/" class="md-nav__link">
+      <a href="../lessons/03-rioxarray/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. xarray & the Data Cube
+    3. rioxarray — Geospatial xarray
   
 
     
@@ -536,14 +536,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/04-rioxarray/" class="md-nav__link">
+      <a href="../lessons/04-dask-analytics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. rioxarray — Geospatial xarray
+    4. Dask — Scalable Analytics
   
 
     
@@ -564,42 +564,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lessons/05-dask-analytics/" class="md-nav__link">
+      <a href="../lessons/05-end-to-end/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Dask — Scalable Analytics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lessons/06-end-to-end/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6. End-to-End Workflow
+    5. End-to-End Workflow
   
 
     
@@ -712,10 +684,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-data-cube-concept" class="md-nav__link">
+  <a href="#workshop-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The data cube concept
+        Workshop overview
       
     </span>
   </a>
@@ -754,32 +726,62 @@
 <h2 id="why-cloud-native-raster-analytics">Why cloud-native raster analytics?</h2>
 <p>Traditional raster workflows often assume:</p>
 <ul>
-<li>Data lives on your machine or a mounted drive.</li>
-<li>You download full scenes or tiles before analysis.</li>
+<li>Data lives on a local disk or a mounted drive.</li>
+<li>Full scenes or tiles are downloaded before analysis.</li>
 <li>Processing is limited by RAM and single-machine CPU.</li>
 </ul>
 <p><strong>Cloud-native</strong> workflows invert this:</p>
 <ul>
 <li><strong>Discovery</strong> happens via catalogs (STAC) over the web.</li>
-<li><strong>Data stays in the cloud</strong>; you stream only the windows or bands you need (e.g. via COGs).</li>
+<li><strong>Data stays in the cloud</strong>; only the required windows or bands are streamed (e.g. via COGs).</li>
 <li><strong>Compute</strong> can be chunked and parallelized (Dask) so that large rasters never need to be fully loaded.</li>
 </ul>
-<p>The result: you can work with continental or global, multi-temporal rasters from a laptop or a cluster using the same code.</p>
+<p>The same code can then run on a laptop or a cluster, including continental or global multi-temporal rasters.</p>
 <hr />
-<h2 id="the-data-cube-concept">The data cube concept</h2>
-<p>A <strong>data cube</strong> (or <em>raster data cube</em>) is a multi-dimensional array where dimensions typically include:</p>
-<ul>
-<li><strong>Spatial</strong>: <code>y</code>, <code>x</code> (or lat/lon)</li>
-<li><strong>Temporal</strong>: <code>time</code></li>
-<li><strong>Thematic</strong>: <code>band</code>, <code>variable</code>, or <code>layer</code></li>
-</ul>
-<p>Conceptually:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>         time →
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>band  [  [ 2D raster ]  [ 2D raster ]  ...  ]
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      [  [ 2D raster ]  [ 2D raster ]  ...  ]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      ...
-</code></pre></div>
-<p>In this course we use <strong>xarray</strong> to represent this model: dimensions and coordinates are <strong>labeled</strong>, so you select by name (e.g. <code>time</code>, <code>band</code>) instead of axis index. That makes code readable and less error-prone when combining multiple scenes or variables.</p>
+<h2 id="workshop-overview">Workshop overview</h2>
+<p>This workshop covers a cloud-native raster pipeline in Python: <strong>find data, stream it, model it as a cube, and scale the compute</strong>.</p>
+<p><img alt="Workshop pipeline: STAC → COG → xarray → Dask" src="../assets/images/pipeline-overview.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Tool</th>
+<th>Lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search satellite rasters by place, time, and metadata (e.g. cloud cover)</td>
+<td><strong>STAC</strong></td>
+<td><a href="../lessons/01-stac-cog/">1. STAC &amp; COG</a></td>
+</tr>
+<tr>
+<td>Stream only the required tiles over HTTP — no full-scene download</td>
+<td><strong>COG</strong></td>
+<td><a href="../lessons/01-stac-cog/">1. STAC &amp; COG</a></td>
+</tr>
+<tr>
+<td>Model rasters as a labeled cube (<code>time</code>, <code>band</code>, <code>y</code>, <code>x</code>) and select by name</td>
+<td><strong>xarray</strong></td>
+<td><a href="../lessons/02-xarray-datacube/">2. Data cube</a></td>
+</tr>
+<tr>
+<td>Attach CRS, clip, and reproject inside xarray</td>
+<td><strong>rioxarray</strong></td>
+<td><a href="../lessons/03-rioxarray/">3. rioxarray</a></td>
+</tr>
+<tr>
+<td>Run chunked, lazy, parallel analytics that fit in memory</td>
+<td><strong>Dask</strong></td>
+<td><a href="../lessons/04-dask-analytics/">4. Dask</a></td>
+</tr>
+<tr>
+<td>Assemble one reproducible NDVI workflow from search to time series</td>
+<td>all of the above</td>
+<td><a href="../lessons/05-end-to-end/">5. End-to-end</a></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="tooling-overview">Tooling overview</h2>
 <table>
@@ -818,7 +820,6 @@
 </tr>
 </tbody>
 </table>
-<p>Together they form a pipeline: <strong>STAC (find) → COG (stream) → xarray (model) → Dask (scale)</strong>.</p>
 <hr />
 
 
@@ -905,7 +906,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

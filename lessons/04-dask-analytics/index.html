@@ -12,28 +12,28 @@
         <meta name="author" content="Aman Chaudhary">
       
       
-        <link rel="canonical" href="https://amanchry.github.io/scalable-raster-analytics/lessons/04-rioxarray/">
+        <link rel="canonical" href="https://amanchry.github.io/scalable-raster-analytics/lessons/04-dask-analytics/">
       
       
-        <link rel="prev" href="../03-xarray-datacube/">
+        <link rel="prev" href="../03-rioxarray/">
       
       
-        <link rel="next" href="../05-dask-analytics/">
+        <link rel="next" href="../05-end-to-end/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>4. rioxarray — Geospatial xarray - Scalable Raster Analytics with STAC, xarray & Dask</title>
+        <title>4. Dask — Scalable Analytics - Scalable Raster Analytics with STAC, xarray & Dask</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rioxarray-geospatial-xarray" class="md-skip">
+        <a href="#dask-scalable-raster-analytics" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. rioxarray — Geospatial xarray
+              4. Dask — Scalable Analytics
             
           </span>
         </div>
@@ -374,14 +374,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-stac-discovery/" class="md-nav__link">
+      <a href="../01-stac-cog/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. STAC — Discovery
+    1. STAC & Cloud-Optimized GeoTIFF
   
 
     
@@ -402,14 +402,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-cog-streaming/" class="md-nav__link">
+      <a href="../02-xarray-datacube/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Cloud-Optimized GeoTIFF
+    2. xarray & the Data Cube
   
 
     
@@ -430,14 +430,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-xarray-datacube/" class="md-nav__link">
+      <a href="../03-rioxarray/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. xarray & the Data Cube
+    3. rioxarray — Geospatial xarray
   
 
     
@@ -474,7 +474,7 @@
   <span class="md-ellipsis">
     
   
-    4. rioxarray — Geospatial xarray
+    4. Dask — Scalable Analytics
   
 
     
@@ -492,7 +492,7 @@
   <span class="md-ellipsis">
     
   
-    4. rioxarray — Geospatial xarray
+    4. Dask — Scalable Analytics
   
 
     
@@ -518,10 +518,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-rioxarray" class="md-nav__link">
+  <a href="#the-scalability-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is rioxarray?
+        The scalability problem
       
     </span>
   </a>
@@ -529,10 +529,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opening-a-cog" class="md-nav__link">
+  <a href="#dask-in-one-paragraph" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Opening a COG
+        Dask in one paragraph
       
     </span>
   </a>
@@ -540,10 +540,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-rio-accessor" class="md-nav__link">
+  <a href="#chunking-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The .rio accessor
+        Chunking strategy
       
     </span>
   </a>
@@ -551,10 +551,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chunked-lazy-opening" class="md-nav__link">
+  <a href="#lazy-pipeline-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chunked (lazy) opening
+        Lazy pipeline example
       
     </span>
   </a>
@@ -562,10 +562,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-band-and-multi-scene" class="md-nav__link">
+  <a href="#when-compute-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multi-band and multi-scene
+        When compute runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-vs-distributed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local vs distributed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best practices
       
     </span>
   </a>
@@ -599,42 +621,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-dask-analytics/" class="md-nav__link">
+      <a href="../05-end-to-end/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Dask — Scalable Analytics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-end-to-end/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6. End-to-End Workflow
+    5. End-to-End Workflow
   
 
     
@@ -736,10 +730,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-rioxarray" class="md-nav__link">
+  <a href="#the-scalability-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is rioxarray?
+        The scalability problem
       
     </span>
   </a>
@@ -747,10 +741,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opening-a-cog" class="md-nav__link">
+  <a href="#dask-in-one-paragraph" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Opening a COG
+        Dask in one paragraph
       
     </span>
   </a>
@@ -758,10 +752,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-rio-accessor" class="md-nav__link">
+  <a href="#chunking-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The .rio accessor
+        Chunking strategy
       
     </span>
   </a>
@@ -769,10 +763,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chunked-lazy-opening" class="md-nav__link">
+  <a href="#lazy-pipeline-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chunked (lazy) opening
+        Lazy pipeline example
       
     </span>
   </a>
@@ -780,10 +774,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-band-and-multi-scene" class="md-nav__link">
+  <a href="#when-compute-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multi-band and multi-scene
+        When compute runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-vs-distributed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local vs distributed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best practices
       
     </span>
   </a>
@@ -818,108 +834,81 @@
 
 
 
-<h1 id="rioxarray-geospatial-xarray">rioxarray — Geospatial xarray</h1>
-<p><strong>Goal:</strong> Open Cloud-Optimized GeoTIFFs (and other rasters) as <strong>xarray</strong> objects with correct CRS, bounds, and dimensions using <strong>rioxarray</strong>.</p>
+<h1 id="dask-scalable-raster-analytics">Dask — Scalable Raster Analytics</h1>
+<p><strong>Goal:</strong> Use <strong>Dask</strong> with xarray/rioxarray to run <strong>chunked</strong>, <strong>lazy</strong>, and <strong>parallel</strong> raster analytics so that large rasters never need to be fully loaded into memory.</p>
 <hr />
-<h2 id="what-is-rioxarray">What is rioxarray?</h2>
-<p><strong>rioxarray</strong> extends xarray so that raster I/O and spatial metadata are first-class:</p>
+<h2 id="the-scalability-problem">The scalability problem</h2>
 <ul>
-<li><strong>Open</strong> rasters (GeoTIFF, COG, etc.) from path or URL into a <code>DataArray</code> or <code>Dataset</code>.</li>
-<li><strong>Attach</strong> CRS and transform via the <code>.rio</code> accessor.</li>
-<li><strong>Reproject</strong>, <strong>clip</strong>, <strong>merge</strong>, and <strong>write</strong> rasters using the same accessor.</li>
+<li>A single Sentinel-2 tile might be 10+ GB (all bands, full resolution).</li>
+<li>A time series of 100 dates exceeds RAM on most machines if loaded at once.</li>
+<li><strong>Solution</strong>: Keep data in <strong>chunks</strong>, compute only the chunks that are needed, and run operations <strong>in parallel</strong> over chunks. <strong>Dask</strong> does exactly that.</li>
 </ul>
-<p>Under the hood it uses <strong>rasterio</strong> for reading/writing and GDAL for formats; the result is an xarray structure you can combine with Dask and the rest of the scientific Python stack.</p>
 <hr />
-<h2 id="opening-a-cog">Opening a COG</h2>
-<p>Use a signed STAC asset URL (see Lesson 1 for search + sign). Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pystac_client</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">planetary_computer</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac_client</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s2">&quot;https://planetarycomputer.microsoft.com/api/stac/v1&quot;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">search</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sentinel-2-l2a&quot;</span><span class="p">],</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">122.4</span><span class="p">,</span> <span class="mf">37.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.2</span><span class="p">,</span> <span class="mf">37.8</span><span class="p">],</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">datetime</span><span class="o">=</span><span class="s2">&quot;2023-06-15&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">max_items</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">item</span> <span class="o">=</span> <span class="n">planetary_computer</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B04&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">href</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</code></pre></div>
-<p>Default behavior:</p>
+<h2 id="dask-in-one-paragraph">Dask in one paragraph</h2>
+<p><strong>Dask</strong> provides array-like types (<code>dask.array</code>) that look like NumPy but:</p>
 <ul>
-<li><strong>Dimensions</strong>: often <code>band</code>, <code>y</code>, <code>x</code> (band as first dimension).</li>
-<li><strong>Coordinates</strong>: <code>x</code> and <code>y</code> come from the geotransform (centers or edges, depending on driver).</li>
-<li><strong>CRS</strong>: stored in <code>data.rio.crs</code>.</li>
-<li><strong>Bounds</strong>: <code>data.rio.bounds</code>.</li>
-<li><strong>Transform</strong>: <code>data.rio.transform()</code>.</li>
+<li>Are <strong>lazy</strong>: operations build a task graph instead of executing immediately.</li>
+<li>Are <strong>chunked</strong>: the logical array is split into blocks; each block is a task.</li>
+<li>Execute in <strong>parallel</strong> when <code>.compute()</code> is called (using threads, processes, or a cluster).</li>
 </ul>
-<p>So you get a <strong>data cube slice</strong> (one scene, one or more bands) with spatial labels.</p>
+<p><strong>xarray</strong> integrates Dask: if a DataArray’s data is a <code>dask.array</code>, then xarray operations (slicing, reduction, arithmetic) stay lazy until <code>.compute()</code> or I/O (e.g. plot, write).</p>
 <hr />
-<h2 id="the-rio-accessor">The <code>.rio</code> accessor</h2>
-<p>All spatial operations live under the <strong><code>.rio</code></strong> accessor:</p>
-<table>
-<thead>
-<tr>
-<th>Method / property</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.rio.crs</code></td>
-<td>Coordinate reference system</td>
-</tr>
-<tr>
-<td><code>.rio.bounds</code></td>
-<td>(left, bottom, right, top)</td>
-</tr>
-<tr>
-<td><code>.rio.transform()</code></td>
-<td>Affine transform (pixel ↔ geo)</td>
-</tr>
-<tr>
-<td><code>.rio.reproject()</code></td>
-<td>Reproject to another CRS</td>
-</tr>
-<tr>
-<td><code>.rio.clip()</code></td>
-<td>Clip with a geometry (e.g. GeoDataFrame)</td>
-</tr>
-<tr>
-<td><code>.rio.write_crs()</code></td>
-<td>Set CRS before writing</td>
-</tr>
-<tr>
-<td><code>.rio.to_raster()</code></td>
-<td>Write to GeoTIFF/COG</td>
-</tr>
-</tbody>
-</table>
-<p>Example: clip to a bounding box (same CRS as data), or clip with a vector.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Clip to a box</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">clipped</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="n">minx</span><span class="o">=-</span><span class="mf">122.35</span><span class="p">,</span> <span class="n">miny</span><span class="o">=</span><span class="mf">37.65</span><span class="p">,</span> <span class="n">maxx</span><span class="o">=-</span><span class="mf">122.28</span><span class="p">,</span> <span class="n">maxy</span><span class="o">=</span><span class="mf">37.72</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Or clip with a GeoDataFrame</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># clipped = data.rio.clip(geodf.geometry, geodf.crs)</span>
-</code></pre></div>
-<p>Single-band rasters: drop the band dimension for simpler indexing: <code>data = data.squeeze("band", drop=True)</code>.</p>
-<hr />
-<h2 id="chunked-lazy-opening">Chunked (lazy) opening</h2>
-<p>For large rasters and Dask-based workflows, open with <strong>chunks</strong> so that the underlying array is a <strong>Dask</strong> array:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>  <span class="c1"># or chunks={&quot;x&quot;: 1024, &quot;y&quot;: 1024}</span>
-</code></pre></div>
-<p>Then operations are <strong>lazy</strong> until you call <code>.compute()</code> or trigger plotting. This is the bridge to <strong>Lesson 5</strong> (Dask).</p>
-<hr />
-<h2 id="multi-band-and-multi-scene">Multi-band and multi-scene</h2>
+<h2 id="chunking-strategy">Chunking strategy</h2>
 <ul>
-<li><strong>Single COG, multiple bands</strong>: <code>open_rasterio</code> returns one DataArray with dim <code>band</code>; you can <code>ds = data.to_dataset(dim="band")</code> to get a Dataset with one variable per band.</li>
-<li><strong>Multiple scenes (e.g. from STAC)</strong>: Open each asset with <code>open_rasterio</code>, optionally align with <code>xr.concat(..., dim="time")</code> and assign <code>time</code> coordinates from STAC item dates.</li>
+<li><strong>Chunk size</strong>: Small enough to fit in memory (e.g. 512×512 or 1024×1024 pixels per chunk); large enough to amortize overhead.</li>
+<li><strong>Alignment</strong>: Chunk boundaries should align with the raster’s internal blocks (e.g. COG tiles) when possible, so one read = one chunk.</li>
+<li><strong>Dimensions</strong>: For a <code>(time, band, y, x)</code> cube, chunk <code>y</code> and <code>x</code> and keep <code>time</code> and <code>band</code> unchunked (or chunk time if there are many dates).</li>
 </ul>
-<p>We combine this in <strong>Lesson 6</strong> for a full STAC → COG → xarray → Dask pipeline.</p>
+<p>Typical pattern:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># When opening with rioxarray</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">})</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Or rechunk after open</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">})</span>
+</code></pre></div>
+<hr />
+<h2 id="lazy-pipeline-example">Lazy pipeline example</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">url</span> <span class="o">=</span> <span class="s2">"https://..."</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">"band"</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">"green"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">"nir"</span><span class="p">})</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># All of this is lazy</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">ndvi</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">"nir"</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"red"</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">"nir"</span><span class="p">]</span> <span class="o">+</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"red"</span><span class="p">])</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">mean_ndvi</span> <span class="o">=</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">])</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Only this triggers actual read + compute</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">result</span> <span class="o">=</span> <span class="n">mean_ndvi</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</code></pre></div>
+<p>Dask will:</p>
+<ol>
+<li>Read only the chunks needed for the requested window or reduction.</li>
+<li>Run arithmetic and reduction in parallel over chunks.</li>
+<li>Return a small result (e.g. a scalar or 1D array) without ever holding the full raster in memory.</li>
+</ol>
+<hr />
+<h2 id="when-compute-runs">When compute runs</h2>
+<ul>
+<li><strong>Explicit</strong>: <code>.compute()</code> returns a concrete NumPy/xarray result.</li>
+<li><strong>Implicit</strong>: <code>.plot()</code>, <code>.to_netcdf()</code>, <code>.rio.to_raster()</code> trigger computation for the data they need.</li>
+<li><strong>Persist</strong>: <code>.persist()</code> computes and keeps the result in distributed memory (useful in a cluster) so later steps don’t recompute.</li>
+</ul>
+<hr />
+<h2 id="local-vs-distributed">Local vs distributed</h2>
+<ul>
+<li><strong>Default (threaded)</strong>: <code>dask.array</code> uses a thread pool; good for I/O-bound COG reads.</li>
+<li><strong>Processes</strong>: <code>dask.distributed.Client(processes=True)</code> for CPU-bound work.</li>
+<li><strong>Cluster</strong>: Point xarray/Dask to a <code>distributed.Client("scheduler-address")</code> to run on multiple machines. The same code (open COG, chunk, reduce) scales up.</li>
+</ul>
+<hr />
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li><strong>Chunk to align with COG tiles</strong> when possible (e.g. 512 or 1024).</li>
+<li><strong>Avoid too many tiny chunks</strong> (overhead) and <strong>too few huge chunks</strong> (memory).</li>
+<li><strong>Use reductions</strong> (<code>.mean()</code>, <code>.sum()</code>) along dimensions to shrink data before <code>.compute()</code>.</li>
+<li><strong>Profile</strong>: Use <code>dask.distributed.dashboard</code> or Dask’s profilers to see where time is spent.</li>
+</ul>
 <hr />
 <h2 id="summary">Summary</h2>
 <table>
@@ -931,26 +920,25 @@
 </thead>
 <tbody>
 <tr>
-<td>rioxarray</td>
-<td>Geospatial extension for xarray: open rasters, CRS, bounds, clip, reproject</td>
+<td>Dask</td>
+<td>Lazy, chunked, parallel arrays; xarray can wrap Dask arrays</td>
 </tr>
 <tr>
-<td>Opening</td>
-<td><code>rioxarray.open_rasterio(path_or_url)</code> → DataArray with <code>band</code>, <code>y</code>, <code>x</code></td>
+<td>Chunking</td>
+<td>Split (e.g. y, x) into blocks; align with COG tiles when possible</td>
 </tr>
 <tr>
-<td>.rio</td>
-<td>Accessor for CRS, bounds, transform, clip, reproject, to_raster</td>
+<td>Lazy</td>
+<td>Operations build a graph; <code>.compute()</code> or I/O triggers execution</td>
 </tr>
 <tr>
-<td>Chunks</td>
-<td><code>chunks="auto"</code> or explicit for Dask-backed lazy reading</td>
+<td>Scale</td>
+<td>Same code can run on one machine or a Dask cluster</td>
 </tr>
 </tbody>
 </table>
-<p>Next we use <strong>Dask</strong> to run parallel, chunked analytics on these structures.</p>
 <hr />
-<p>Download the notebook for this lesson: <code>notebooks/04-rioxarray.ipynb</code>.</p>
+<p>Download the notebook for this lesson: <code>notebooks/04-dask-analytics.ipynb</code>.</p>
 
 
 
@@ -1036,7 +1024,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
