@@ -61,7 +61,7 @@ nav:
     - "2. xarray & the Data Cube": lessons/02-xarray-datacube.md
     - "3. rioxarray — Geospatial xarray": lessons/03-rioxarray.md
     - "4. Dask — Scalable Analytics": lessons/04-dask-analytics.md
-    - "5. End-to-End Workflow": lessons/05-end-to-end.md
+    - "5. Application — Vegetation greenness": lessons/05-end-to-end.md
   - Notebooks: notebooks.md
   - References: references.md
 

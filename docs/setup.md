@@ -44,7 +44,7 @@ Install from `conda-forge`. Copy the block for the host platform.
 conda install -c conda-forge -y `
   numpy rasterio xarray rioxarray dask `
   pystac-client planetary-computer geopandas pyproj `
-  matplotlib jupyterlab ipykernel
+  matplotlib jupyterlab ipykernel pandas
 ```
 
 **macOS / Linux**
@@ -53,7 +53,7 @@ conda install -c conda-forge -y `
 conda install -c conda-forge -y \
   numpy rasterio xarray rioxarray dask \
   pystac-client planetary-computer geopandas pyproj \
-  matplotlib jupyterlab ipykernel
+  matplotlib jupyterlab ipykernel pandas
 ```
 
 The local environment is now ready.
@@ -64,7 +64,7 @@ Pip-only install (activate `geoenv` first):
 
 ```bash
 pip install numpy rasterio xarray rioxarray dask pystac-client \
-  planetary-computer geopandas pyproj matplotlib jupyterlab ipykernel
+  planetary-computer geopandas pyproj matplotlib jupyterlab ipykernel pandas
 ```
 
 Geospatial wheels can be fragile on Windows; conda-forge is the more reliable path.

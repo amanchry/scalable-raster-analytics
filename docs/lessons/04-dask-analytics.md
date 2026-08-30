@@ -43,27 +43,36 @@ data = data.chunk({"x": 1024, "y": 1024})
 
 ## Lazy pipeline example
 
+The lesson notebook opens the Lesson 3 GeoTIFFs with `chunks=` (no STAC). ERA5-Land is many days and few pixels; the DEM is one band and many pixels.
+
 ```python
 import rioxarray
-import xarray as xr
 
-url = "https://..."
-ds = rioxarray.open_rasterio(url, chunks="auto").to_dataset(dim="band")
-ds = ds.rename({1: "red", 2: "green", 3: "blue", 4: "nir"})
+prec = rioxarray.open_rasterio(
+    "data/prec_daily_2024_ERA5LAND_native.tif",
+    chunks={"band": 30, "x": 200, "y": 200},
+)
+dem = rioxarray.open_rasterio(
+    "data/copernicus_dem_30m.tif",
+    chunks={"x": 1024, "y": 1024},
+).squeeze("band", drop=True)
 
 # All of this is lazy
-ndvi = (ds["nir"] - ds["red"]) / (ds["nir"] + ds["red"])
-mean_ndvi = ndvi.mean(dim=["x", "y"])
+prec_ts = prec.mean(dim=("y", "x"))
+dem_mean = dem.mean()
 
-# Only this triggers actual read + compute
-result = mean_ndvi.compute()
+# Only this triggers the read
+prec_ts.compute()
+dem_mean.compute()
 ```
 
 Dask will:
 
-1. Read only the chunks needed for the requested window or reduction.
+1. Split each raster into chunks (time slabs on climate; 1024×1024 tiles on the DEM).
 2. Run arithmetic and reduction in parallel over chunks.
-3. Return a small result (e.g. a scalar or 1D array) without ever holding the full raster in memory.
+3. Return a small result (a daily series, a scalar) without holding the full grid in memory.
+
+Lesson 5 uses the same `chunks=` + reduce pattern on Sentinel-2 COGs from STAC.
 
 ---
 

@@ -31,7 +31,7 @@ This workshop covers a cloud-native raster pipeline in Python: **find data, stre
 | Model rasters as a labeled cube (`time`, `band`, `y`, `x`) and select by name | **xarray** | [2. Data cube](lessons/02-xarray-datacube.md) |
 | Attach CRS, clip, and reproject inside xarray | **rioxarray** | [3. rioxarray](lessons/03-rioxarray.md) |
 | Run chunked, lazy, parallel analytics that fit in memory | **Dask** | [4. Dask](lessons/04-dask-analytics.md) |
-| Assemble one reproducible NDVI workflow from search to time series | all of the above | [5. End-to-end](lessons/05-end-to-end.md) |
+| Assemble one vegetation-monitoring application from search to maps | all of the above | [5. Application](lessons/05-end-to-end.md) |
 
 
 ---
