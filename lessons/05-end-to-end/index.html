@@ -29,7 +29,7 @@
     
     
       
-        <title>5. End-to-End Workflow - Scalable Raster Analytics with STAC, xarray & Dask</title>
+        <title>5. Application — Vegetation greenness - Scalable Raster Analytics with STAC, xarray & Dask</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#end-to-end-workflow" class="md-skip">
+        <a href="#application-vegetation-greenness" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. End-to-End Workflow
+              5. Application — Vegetation greenness
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   <span class="md-ellipsis">
     
   
-    5. End-to-End Workflow
+    5. Application — Vegetation greenness
   
 
     
@@ -520,7 +520,7 @@
   <span class="md-ellipsis">
     
   
-    5. End-to-End Workflow
+    5. Application — Vegetation greenness
   
 
     
@@ -546,10 +546,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pipeline-overview" class="md-nav__link">
+  <a href="#pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipeline overview
+        Pipeline
       
     </span>
   </a>
@@ -557,10 +557,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-discover-assets-stac" class="md-nav__link">
+  <a href="#what-each-lesson-does-here" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Discover assets (STAC)
+        What each lesson does here
       
     </span>
   </a>
@@ -568,10 +568,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-open-as-chunked-xarray-cog-rioxarray" class="md-nav__link">
+  <a href="#search-stac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Open as chunked xarray (COG + rioxarray)
+        Search (STAC)
       
     </span>
   </a>
@@ -579,10 +579,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-derive-an-index-xarray" class="md-nav__link">
+  <a href="#cube-ndvi-rioxarray-xarray-dask" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Derive an index (xarray)
+        Cube + NDVI (rioxarray, xarray, Dask)
       
     </span>
   </a>
@@ -590,43 +590,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-reduce-or-subset-dask" class="md-nav__link">
+  <a href="#outputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: Reduce or subset (Dask)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-optional-write-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5: Optional — write outputs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#putting-it-together" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Putting it together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Summary
+        Outputs
       
     </span>
   </a>
@@ -730,10 +697,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pipeline-overview" class="md-nav__link">
+  <a href="#pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipeline overview
+        Pipeline
       
     </span>
   </a>
@@ -741,10 +708,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-discover-assets-stac" class="md-nav__link">
+  <a href="#what-each-lesson-does-here" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Discover assets (STAC)
+        What each lesson does here
       
     </span>
   </a>
@@ -752,10 +719,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-open-as-chunked-xarray-cog-rioxarray" class="md-nav__link">
+  <a href="#search-stac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Open as chunked xarray (COG + rioxarray)
+        Search (STAC)
       
     </span>
   </a>
@@ -763,10 +730,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-derive-an-index-xarray" class="md-nav__link">
+  <a href="#cube-ndvi-rioxarray-xarray-dask" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Derive an index (xarray)
+        Cube + NDVI (rioxarray, xarray, Dask)
       
     </span>
   </a>
@@ -774,43 +741,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-reduce-or-subset-dask" class="md-nav__link">
+  <a href="#outputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: Reduce or subset (Dask)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-optional-write-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 5: Optional — write outputs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#putting-it-together" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Putting it together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Summary
+        Outputs
       
     </span>
   </a>
@@ -834,133 +768,94 @@
 
 
 
-<h1 id="end-to-end-workflow">End-to-End Workflow</h1>
-<p><strong>Goal:</strong> Combine <strong>STAC</strong> (discovery), <strong>COG</strong> (streaming), <strong>xarray</strong> (data cube), <strong>rioxarray</strong> (geospatial I/O), and <strong>Dask</strong> (scalable compute) into one reproducible pipeline.</p>
+<h1 id="application-vegetation-greenness">Application — vegetation greenness</h1>
+<p><strong>Goal:</strong> Run one application that uses <strong>every</strong> workshop tool: STAC, COG, xarray, rioxarray, and Dask.</p>
+<p><strong>Question:</strong> How does Sentinel-2 NDVI change from January to June 2023 over a small AOI in northern Karnataka, and is greenness different on higher ground?</p>
 <hr />
-<h2 id="pipeline-overview">Pipeline overview</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>STAC API (search)  →  Items + asset URLs  →  Sign (if needed)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>       →  open_rasterio(url, chunks)  →  xarray Dataset
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>       →  Derive index (e.g. NDVI)  →  Reduce (mean, std, etc.) or write
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       →  .compute() / .to_raster()
+<h2 id="pipeline">Pipeline</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>STAC search (S2 + DEM)  →  sign URLs
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>       →  open_rasterio(url, chunks)  →  clip_box
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>       →  reproject_match (DEM onto S2)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       →  concat time  →  NDVI
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       →  persist / mean / mask  →  plot + GeoTIFF / NetCDF
 </code></pre></div>
-<p>All steps stay in Python; data stays in the cloud until a read or write is triggered.</p>
+<p>Clip first. Data stays in the cloud until a plot or write.</p>
 <hr />
-<h2 id="step-1-discover-assets-stac">Step 1: Discover assets (STAC)</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pystac_client</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">planetary_computer</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac_client</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="s2">"https://planetarycomputer.microsoft.com/api/stac/v1"</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">BBOX</span> <span class="o">=</span> <span class="p">[</span><span class="mf">75.62</span><span class="p">,</span> <span class="mf">16.20</span><span class="p">,</span> <span class="mf">77.29</span><span class="p">,</span> <span class="mf">17.47</span><span class="p">]</span>  <span class="c1"># northern Karnataka, India</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">search</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">"sentinel-2-l2a"</span><span class="p">],</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">bbox</span><span class="o">=</span><span class="n">BBOX</span><span class="p">,</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">datetime</span><span class="o">=</span><span class="s2">"2023-06-01/2023-06-30"</span><span class="p">,</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">max_items</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">)</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">planetary_computer</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
-</code></pre></div>
-<hr />
-<h2 id="step-2-open-as-chunked-xarray-cog-rioxarray">Step 2: Open as chunked xarray (COG + rioxarray)</h2>
-<p>Pick one item and open one or more bands (e.g. red and NIR for NDVI). Use <strong>chunks</strong> so the array is Dask-backed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">open_bands</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">band_names</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">bands</span> <span class="o">=</span> <span class="p">{}</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">band_names</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">asset</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">da</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">asset</span><span class="o">.</span><span class="n">href</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="n">chunks</span> <span class="ow">or</span> <span class="s2">"auto"</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">bands</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="s2">"band"</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">ds</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">datetime</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="k">return</span> <span class="n">ds</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># One scene</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">open_bands</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B04"</span><span class="p">,</span> <span class="s2">"B08"</span><span class="p">],</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">})</span>
-</code></pre></div>
-<hr />
-<h2 id="step-3-derive-an-index-xarray">Step 3: Derive an index (xarray)</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">ds</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">+</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span>
-</code></pre></div>
-<hr />
-<h2 id="step-4-reduce-or-subset-dask">Step 4: Reduce or subset (Dask)</h2>
-<ul>
-<li><strong>Spatial mean</strong> (one value per scene):</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mean_ndvi</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">])</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">mean_ndvi</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-</code></pre></div>
-<ul>
-<li><strong>Time series</strong>: Concatenate multiple scenes along <code>time</code>, then reduce:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">open_bands</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B04"</span><span class="p">,</span> <span class="s2">"B08"</span><span class="p">],</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">})</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">combined</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">scenes</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">"time"</span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">combined</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">combined</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">-</span> <span class="n">combined</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">combined</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">+</span> <span class="n">combined</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">ts</span> <span class="o">=</span> <span class="n">combined</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">])</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">ts</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-</code></pre></div>
-<hr />
-<h2 id="step-5-optional-write-outputs">Step 5: Optional — write outputs</h2>
-<ul>
-<li><strong>To raster</strong>: <code>combined["ndvi"].rio.to_raster("ndvi.tif")</code> (triggers compute for that variable).</li>
-<li><strong>To NetCDF</strong>: <code>combined.to_netcdf("cube.nc")</code> (with engine and encoding as needed).</li>
-</ul>
-<hr />
-<h2 id="putting-it-together">Putting it together</h2>
-<p>A minimal end-to-end script:</p>
-<ol>
-<li>Search STAC (bbox, time, collection).</li>
-<li>Sign items if required.</li>
-<li>Open selected bands with <code>rioxarray.open_rasterio(..., chunks=...)</code>.</li>
-<li>Build a Dataset (and optionally concatenate over time).</li>
-<li>Compute derived variables (NDVI, EVI, etc.).</li>
-<li>Reduce (e.g. mean over space) or write (GeoTIFF/NetCDF).</li>
-<li>Call <code>.compute()</code> or use plotting/writing to run the graph.</li>
-</ol>
-<p>This is the <strong>scalable raster analytics</strong> workflow: discovery (STAC), streaming (COG), modeling (xarray/rioxarray), and scalable compute (Dask).</p>
-<hr />
-<h2 id="summary">Summary</h2>
+<h2 id="what-each-lesson-does-here">What each lesson does here</h2>
 <table>
 <thead>
 <tr>
-<th>Step</th>
+<th>Application step</th>
 <th>Tool</th>
-<th>Action</th>
+<th>Lesson</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Search S2 + DEM by bbox, time, cloud cover</td>
+<td>STAC + <code>planetary_computer.sign</code></td>
 <td>1</td>
-<td>STAC (pystac-client)</td>
-<td>Search by bbox, time; get asset URLs</td>
 </tr>
 <tr>
-<td>2</td>
-<td>planetary_computer (if PC)</td>
-<td>Sign asset URLs</td>
+<td>Open a COG; read CRS / shape only</td>
+<td>COG + rioxarray</td>
+<td>1</td>
 </tr>
 <tr>
+<td>Clip the window; warp DEM onto S2</td>
+<td><code>.rio.clip_box</code>, <code>.rio.reproject_match</code></td>
 <td>3</td>
-<td>rioxarray</td>
-<td>open_rasterio(url, chunks) → xarray</td>
 </tr>
 <tr>
+<td>Stack dates; NDVI; <code>.sel</code> / <code>.isel</code></td>
+<td>xarray Dataset</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>chunks=</code>, persist, spatial mean, elevation mask</td>
+<td>Dask</td>
 <td>4</td>
-<td>xarray</td>
-<td>Derive indices, concat over time</td>
 </tr>
 <tr>
-<td>5</td>
-<td>Dask (via xarray)</td>
-<td>Lazy reductions; .compute() or write to run</td>
+<td>RGB + NDVI maps, time series, write</td>
+<td>matplotlib, <code>.rio.to_raster</code></td>
+<td>1–4</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="search-stac">Search (STAC)</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">CLIP</span> <span class="o">=</span> <span class="p">(</span><span class="mf">76.40</span><span class="p">,</span> <span class="mf">16.75</span><span class="p">,</span> <span class="mf">76.55</span><span class="p">,</span> <span class="mf">16.90</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac_client</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="s2">"https://planetarycomputer.microsoft.com/api/stac/v1"</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">search</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">"sentinel-2-l2a"</span><span class="p">],</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">bbox</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">CLIP</span><span class="p">),</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">datetime</span><span class="o">=</span><span class="s2">"2023-01-01/2023-06-30"</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">max_items</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">query</span><span class="o">=</span><span class="p">{</span><span class="s2">"eo:cloud_cover"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"lt"</span><span class="p">:</span> <span class="mi">15</span><span class="p">}},</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">planetary_computer</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+</code></pre></div>
+<p>A Copernicus DEM tile for the same box is signed the same way (<code>cop-dem-glo-30</code>).</p>
+<hr />
+<h2 id="cube-ndvi-rioxarray-xarray-dask">Cube + NDVI (rioxarray, xarray, Dask)</h2>
+<p>Open B04 and B08 with <code>chunks={"x": 1024, "y": 1024}</code>, <code>clip_box</code> to <code>CLIP</code>, <code>concat</code> along <code>time</code>, then:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">cube</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cube</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">-</span> <span class="n">cube</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">cube</span><span class="p">[</span><span class="s2">"B08"</span><span class="p">]</span> <span class="o">+</span> <span class="n">cube</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">])</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">ts</span> <span class="o">=</span> <span class="n">cube</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">))</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ndvi_high</span> <span class="o">=</span> <span class="n">cube</span><span class="p">[</span><span class="s2">"ndvi"</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cube</span><span class="p">[</span><span class="s2">"dem"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">))</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</code></pre></div>
+<p>The DEM is aligned with <code>reproject_match</code> onto the first Sentinel-2 grid (Lesson 3).</p>
+<hr />
+<h2 id="outputs">Outputs</h2>
+<ul>
+<li>RGB preview from the <code>visual</code> asset</li>
+<li>NDVI map for the first date</li>
+<li>Time series: AOI mean vs DEM &gt; 500 m</li>
+<li><code>output/ndvi_YYYY-MM-DD.tif</code>, <code>dem_on_s2.tif</code>, <code>karnataka_ndvi_dem.nc</code></li>
+</ul>
 <hr />
 <p>Download the notebook for this lesson: <code>notebooks/05-end-to-end.ipynb</code>.</p>
 

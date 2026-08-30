@@ -501,10 +501,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opening-a-cog-from-stac" class="md-nav__link">
+  <a href="#sample-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Opening a COG from STAC
+        Sample Data
       
     </span>
   </a>
@@ -527,17 +527,6 @@
     <span class="md-ellipsis">
       
         Chunked (lazy) opening
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-band-and-multi-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-band and multi-scene
       
     </span>
   </a>
@@ -606,7 +595,7 @@
   <span class="md-ellipsis">
     
   
-    5. End-to-End Workflow
+    5. Application — Vegetation greenness
   
 
     
@@ -719,10 +708,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opening-a-cog-from-stac" class="md-nav__link">
+  <a href="#sample-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Opening a COG from STAC
+        Sample Data
       
     </span>
   </a>
@@ -745,17 +734,6 @@
     <span class="md-ellipsis">
       
         Chunked (lazy) opening
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-band-and-multi-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-band and multi-scene
       
     </span>
   </a>
@@ -791,7 +769,8 @@
 
 
 <h1 id="rioxarray-geospatial-xarray">rioxarray — Geospatial xarray</h1>
-<p><strong>Goal:</strong> Open Cloud-Optimized GeoTIFFs as <strong>xarray</strong> objects with correct CRS, bounds, and dimensions using <strong>rioxarray</strong>, then clip and reproject.</p>
+<p><strong>Goal:</strong> Open  GeoTIFFs as <strong>xarray</strong> objects with correct CRS, bounds, and dimensions using <strong>rioxarray</strong>, then clip, align a DEM, and write outputs.</p>
+<p>Lessons 1–2 streamed rasters from STAC. This lesson uses <strong>files on disk</strong> so clip, <code>reproject_match</code>, and write stay in the foreground.</p>
 <hr />
 <h2 id="what-is-rioxarray">What is rioxarray?</h2>
 <p><strong>rioxarray</strong> extends xarray so that raster I/O and spatial metadata are first-class:</p>
@@ -800,42 +779,50 @@
 <li><strong>Attach</strong> CRS and transform via the <code>.rio</code> accessor.</li>
 <li><strong>Reproject</strong>, <strong>clip</strong>, <strong>align</strong>, and <strong>write</strong> rasters using the same accessor.</li>
 </ul>
-<p>Under the hood it uses <strong>rasterio</strong> for reading/writing and GDAL for formats; the result is an xarray structure that combines with Dask and the rest of the scientific Python stack.</p>
+<p>Under the hood it uses <strong>rasterio</strong> for reading/writing and GDAL for formats.</p>
 <hr />
-<h2 id="opening-a-cog-from-stac">Opening a COG from STAC</h2>
-<p>Use a signed STAC asset URL (see Lesson 1 for search + sign). The lesson notebook opens <strong>Copernicus DEM</strong> (<code>cop-dem-glo-30</code>) and one <strong>Sentinel-2</strong> red band so two grids can be aligned.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pystac_client</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">planetary_computer</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac_client</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s2">"https://planetarycomputer.microsoft.com/api/stac/v1"</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">CLIP</span> <span class="o">=</span> <span class="p">(</span><span class="mf">76.40</span><span class="p">,</span> <span class="mf">16.75</span><span class="p">,</span> <span class="mf">76.55</span><span class="p">,</span> <span class="mf">16.90</span><span class="p">)</span>  <span class="c1"># northern Karnataka, India</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">search</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">"cop-dem-glo-30"</span><span class="p">],</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">bbox</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">CLIP</span><span class="p">),</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">max_items</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">item</span> <span class="o">=</span> <span class="n">planetary_computer</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span><span class="o">.</span><span class="n">href</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<h2 id="sample-data">Sample Data</h2>
+<p>The lesson notebook reads GeoTIFFs from <code>data/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prec_daily_2024_ERA5LAND_native.tif</code></td>
+<td>ERA5-Land daily precipitation (m), one band per day in 2024</td>
+</tr>
+<tr>
+<td><code>temp_daily_2024_ERA5LAND_native.tif</code></td>
+<td>ERA5-Land daily 2 m temperature (K)</td>
+</tr>
+<tr>
+<td><code>copernicus_dem_30m.tif</code></td>
+<td>Copernicus DEM, 30 m</td>
+</tr>
+<tr>
+<td><code>NL_provinces.shp</code></td>
+<td>Province polygons (clip to Utrecht)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rxr</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">prec</span> <span class="o">=</span> <span class="n">rxr</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">"data/prec_daily_2024_ERA5LAND_native.tif"</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">prec</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">prec</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">bounds</span><span class="p">(),</span> <span class="n">prec</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">resolution</span><span class="p">())</span>
 </code></pre></div>
 <p>Default behavior:</p>
 <ul>
-<li><strong>Dimensions</strong>: often <code>band</code>, <code>y</code>, <code>x</code> (band as first dimension).</li>
+<li><strong>Dimensions</strong>: often <code>band</code>, <code>y</code>, <code>x</code> (daily stacks use <code>band</code> for time until you rename it).</li>
 <li><strong>Coordinates</strong>: <code>x</code> and <code>y</code> come from the geotransform.</li>
-<li><strong>CRS</strong>: stored in <code>data.rio.crs</code>.</li>
-<li><strong>Bounds</strong>: <code>data.rio.bounds()</code>.</li>
-<li><strong>Transform</strong>: <code>data.rio.transform()</code>.</li>
+<li><strong>CRS / bounds / transform</strong>: <code>data.rio.crs</code>, <code>data.rio.bounds()</code>, <code>data.rio.transform()</code>.</li>
 </ul>
-<p>The result is a <strong>data cube slice</strong> (one tile, one or more bands) with spatial labels. <code>open_rasterio</code> on a COG URL reads the header first; pixels load when a clip, plot, or write needs them.</p>
-<p>ERA5-Land daily precipitation and temperature GeoTIFFs are not published as COGs on Planetary Computer. Elevation is available as <code>cop-dem-glo-30</code>. Climate reanalysis on that catalog is <code>era5-pds</code> (Zarr, not GeoTIFF).</p>
+<p><code>masked=True</code> turns NoData into NaN.</p>
 <hr />
 <h2 id="the-rio-accessor">The <code>.rio</code> accessor</h2>
-<p>All spatial operations live under the <strong><code>.rio</code></strong> accessor:</p>
 <table>
 <thead>
 <tr>
@@ -882,30 +869,17 @@
 </tr>
 </tbody>
 </table>
-<p>Example: clip to a bounding box in WGS84 (<code>crs="EPSG:4326"</code>), then reproject to UTM zone 43N.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="s2">"band"</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># single-band: drop the extra dim</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">clipped</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">minx</span><span class="o">=</span><span class="mf">76.40</span><span class="p">,</span> <span class="n">miny</span><span class="o">=</span><span class="mf">16.75</span><span class="p">,</span> <span class="n">maxx</span><span class="o">=</span><span class="mf">76.55</span><span class="p">,</span> <span class="n">maxy</span><span class="o">=</span><span class="mf">16.90</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">utm</span> <span class="o">=</span> <span class="n">clipped</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">"EPSG:32643"</span><span class="p">)</span>
+<p>Daily climate bands are mapped to a <code>time</code> coordinate. The 30 m DEM does not share that grid — <code>reproject_match</code> warps it onto one ERA5 slice:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dem</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">prec</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s2">"prec"</span><span class="p">:</span> <span class="n">prec</span><span class="p">,</span> <span class="s2">"temp"</span><span class="p">:</span> <span class="n">temp</span><span class="p">,</span> <span class="s2">"dem"</span><span class="p">:</span> <span class="n">dem</span><span class="p">})</span>
 </code></pre></div>
-<p><code>reproject_match</code> is the usual way to put two STAC rasters on one grid (for example DEM onto Sentinel-2):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">dem_on_s2</span> <span class="o">=</span> <span class="n">dem_clip</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">s2_clip</span><span class="p">)</span>
-</code></pre></div>
+<p>Then clip a rectangle or a polygon (Utrecht), convert kelvin → °C, mask wet days (<code>prec &gt; 0.001</code> m), and write GeoTIFF / NetCDF.</p>
 <hr />
 <h2 id="chunked-lazy-opening">Chunked (lazy) opening</h2>
-<p>For large rasters and Dask-based workflows, open with <strong>chunks</strong> so that the underlying array is a <strong>Dask</strong> array:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>  <span class="c1"># or chunks={"x": 1024, "y": 1024}</span>
+<p>For large rasters and Dask-based workflows, open with <strong>chunks</strong> so the underlying array is a <strong>Dask</strong> array:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>  <span class="c1"># or chunks={"x": 1024, "y": 1024}</span>
 </code></pre></div>
 <p>Operations then stay <strong>lazy</strong> until <code>.compute()</code> or plotting is triggered. This is the bridge to <strong>Lesson 4</strong> (Dask).</p>
-<hr />
-<h2 id="multi-band-and-multi-scene">Multi-band and multi-scene</h2>
-<ul>
-<li><strong>Single COG, multiple bands</strong>: <code>open_rasterio</code> returns one DataArray with dim <code>band</code>; <code>ds = data.to_dataset(dim="band")</code> yields a Dataset with one variable per band.</li>
-<li><strong>Multiple scenes (e.g. from STAC)</strong>: Open each asset with <code>open_rasterio</code>, optionally align with <code>xr.concat(..., dim="time")</code> and assign <code>time</code> coordinates from STAC item dates.</li>
-</ul>
-<p>This is combined in <strong>Lesson 5</strong> for a full STAC → COG → xarray → Dask pipeline.</p>
 <hr />
 <h2 id="summary">Summary</h2>
 <table>
@@ -922,15 +896,19 @@
 </tr>
 <tr>
 <td>Opening</td>
-<td><code>rioxarray.open_rasterio(path_or_url)</code> → DataArray with <code>band</code>, <code>y</code>, <code>x</code></td>
+<td><code>rioxarray.open_rasterio(path)</code> → DataArray with <code>band</code>, <code>y</code>, <code>x</code></td>
+</tr>
+<tr>
+<td>Align</td>
+<td><code>reproject_match</code> puts the DEM on the ERA5 grid</td>
+</tr>
+<tr>
+<td>Clip</td>
+<td><code>clip_box</code> (rectangle) or <code>clip</code> (polygon)</td>
 </tr>
 <tr>
 <td>.rio</td>
-<td>Accessor for CRS, bounds, transform, clip, reproject, reproject_match, to_raster</td>
-</tr>
-<tr>
-<td>Chunks</td>
-<td><code>chunks="auto"</code> or explicit for Dask-backed lazy reading</td>
+<td>Accessor for CRS, bounds, transform, clip, reproject, to_raster</td>
 </tr>
 </tbody>
 </table>
